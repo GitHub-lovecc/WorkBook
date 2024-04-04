@@ -13,5 +13,9 @@ Second, I am proficient in statistical principles and probability theory.
 
 第二，我熟练掌握统计学原理及概率论相关的基础知识。
 
+Thirdly,I am proficient in SQL,a database language. 
+
+第三，我熟练掌握一门数据库语言SQL。
+
 
 
