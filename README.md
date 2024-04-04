@@ -11,5 +11,7 @@ First, I am proficient in Python, a programming language.
 
 Second, I am proficient in statistical principles and probability theory.
 
-第二，我熟练掌握统计学原理及概率论相关知识。
+第二，我熟练掌握统计学原理及概率论相关的基础知识。
+
+
 
