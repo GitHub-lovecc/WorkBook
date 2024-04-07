@@ -1,3 +1,5 @@
+https://zhuanlan.zhihu.com/p/222932740感谢这位前辈的笔记
+
 ---A DATABASE is a collection of data stored in a format that can easily be accessed
 ---数据库是一个以易访问格式存储的数据集合，
 ---为了管理我们的数据库 我们使用一种叫做数据库管理系统（DBMS, Database Management System）的软件。
