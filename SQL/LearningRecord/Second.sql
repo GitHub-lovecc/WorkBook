@@ -1,4 +1,3 @@
-https://zhuanlan.zhihu.com/p/222932740感谢这位前辈的笔记
 
 【第二章】在单一表格中检索数据
 Retrieving Data From a Single Table (时长53分钟)
