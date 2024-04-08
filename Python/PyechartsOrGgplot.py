@@ -412,4 +412,7 @@ c = (
 )
 
 
-'''https://github.com/pyecharts/pyecharts/'''
+'''
+https://github.com/pyecharts/pyecharts/
+http://r-statistics.co/Top50-Ggplot2-Visualizations-MasterList-R-Code.html
+'''
