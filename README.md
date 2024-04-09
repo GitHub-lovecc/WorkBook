@@ -8,6 +8,7 @@
 * OrderRegression
 * PrincipalConponetAnalysis
 * SupportVectorMachine
+* PoissonRegression
 ### WebCrawler
 ## Excel
 * LearningRecord
