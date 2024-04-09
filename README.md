@@ -1,5 +1,4 @@
 # WORKBOOK
-# 工作手册
 * I will record all my valuable work skills here and update them continuously.
 ## Python
 ### MachineLearning
