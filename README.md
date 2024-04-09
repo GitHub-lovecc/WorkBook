@@ -9,6 +9,7 @@
 * PrincipalConponetAnalysis
 * SupportVectorMachine
 * PoissonRegression
+* XGBoost
 ### WebCrawler
 ## Excel
 * LearningRecord
