@@ -4,12 +4,12 @@ I will record all my valuable work skills here and update them continuously.
 我将会在这里记录我所有有价值的工作技能并持续更新。
 ## Python
 ### MachineLearning
-*Introduction
-*LinearRegression
-*NaiveBayes
-*OrderRegression
-*PrincipalConponetAnalysis
-*SupportVectorMachine
+* Introduction
+* LinearRegression
+* NaiveBayes
+* OrderRegression
+* PrincipalConponetAnalysis
+* SupportVectorMachine
 ### WebCrawler
 ## Excel
 ## SQL
@@ -21,6 +21,7 @@ I will record all my valuable work skills here and update them continuously.
 ## Leetcode
 ## Stata
 ## OptimizationMethod
+* GradientDescentMethod
 
 
 
