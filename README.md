@@ -1,24 +1,32 @@
 # WORKBOOK
 # 工作手册
-
 I will record all my valuable work skills here and update them continuously.
-
 我将会在这里记录我所有有价值的工作技能并持续更新。
+## Python
+### MachineLearning
+*Introduction
+*LinearRegression
+*NaiveBayes
+*OrderRegression
+*PrincipalConponetAnalysis
+*SupportVectorMachine
+### WebCrawler
+## Excel
+## SQL
+### DataSummary
+### Exercise
+### LearningRecord
+## Statistics
+## Excel
+## Leetcode
+## Stata
+## OptimizationMethod
 
-Python:{
-        MachineLearning:{}
-        WebCrawler:{}
-}
 
-Excel:{
 
-}
-SQL:{
 
-}
-Statistics:{
 
-}
+
 Markdown支持6种级别的标题，对应html标签 h1 ~ h6，以上标记效果如下：
 
 
