@@ -10,14 +10,14 @@
 * SupportVectorMachine
 ### WebCrawler
 ## Excel
-* LearnRecord
+* LearningRecord
 ## SQL
 ### DataSummary
 ### Exercise
 ### LearningRecord
 ## Statistics
-## Excel
 ## Leetcode
+* LearningRecord
 ## Stata
 ## OptimizationMethod
 * GradientDescentMethod
