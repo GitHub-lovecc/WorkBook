@@ -1,41 +1,42 @@
-# 爬取教育经费执行公告文本
+# 结合已知链接爬取页面文本
 
-
-import pandas as pd
-
-# 从 CSV 文件加载数据
-df1 = pd.read_csv('C:\Users\Administrator\Desktop\教育经费执行公报1.csv')
-df2 = pd.read_csv('C:\Users\Administrator\Desktop\教育经费执行公报2.csv')
-
-combined_df = pd.concat([df1,df2], ignore_index=True)
-
-combined_df.to_csv('C:\Users\Administrator\Desktop\combined_df经费.csv', index=False)
-
-from selenium import webdriver
+import os
 import time
+import pandas as pd
+from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 def process_links(links):
     browser = webdriver.Chrome()
     time.sleep(3)
     for link, title in links:
-        with open(r"C:\Users\Administrator\Desktop\\" + title + '.txt', "w", encoding='utf-8') as f:
+        file_path = os.path.join(r"C:\Users\Administrator\Desktop", title + '.txt')
+        with open(file_path, "w", encoding='utf-8') as f:
             f.write(title + '\n')
-            browser.get(link)
-            time.sleep(1)
             try:
-                content = browser.find_element(By.CLASS_NAME, 'moe-detail-box')
-            except:
-                content = browser.find_element(By.CLASS_NAME, 'm_xinwen_xl')
-            lines = content.find_elements(By.TAG_NAME, 'div')
-            for line in lines:
-                f.write(line.text + '\n')
+                browser.get(link)
+                time.sleep(1)
+                try:
+                    content = browser.find_element(By.CLASS_NAME, 'moe-detail-box')
+                except:
+                    content = browser.find_element(By.CLASS_NAME, 'm_xinwen_xl')
+                lines = content.find_elements(By.TAG_NAME, 'div')
+                for line in lines:
+                    f.write(line.text + '\n')
+            except Exception as e:
+                print(f"处理链接 '{link}' 时出错: {e}")
     # 停止浏览器
     browser.quit()
+
+# 从 CSV 文件加载数据
+df1 = pd.read_csv(r'C:\Users\Administrator\Desktop\教育经费执行公报1.csv')
+df2 = pd.read_csv(r'C:\Users\Administrator\Desktop\教育经费执行公报2.csv')
+
+combined_df = pd.concat([df1,df2], ignore_index=True)
+combined_df.to_csv(r'C:\Users\Administrator\Desktop\combined_df经费.csv', index=False)
 
 # 提取链接和标题并转换为列表形式
 links = combined_df[['链接', '标题']].values.tolist()
 
 # 调用函数处理链接
 process_links(links)
-
