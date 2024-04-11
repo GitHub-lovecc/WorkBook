@@ -7,7 +7,7 @@ import time
 from selenium.webdriver.common.by import By
 
 # 从 CSV 文件加载数据
-df = pd.read_csv('D:\.a桌面\作业\吕一清\空间地理\教育专题\教育经费\combined_df经费.csv')  # 替换为您的 DataFrame 文件路径
+df = pd.read_csv('C:\Users\Administrator\Desktop\combined_df经费.csv')  # 替换为您的 DataFrame 文件路径
 
 # 定义处理函数
 def process_url(url, index, total_data):
@@ -42,6 +42,6 @@ for index, row in df.iterrows():
     total_data = process_url(url, index, total_data)
 
 # 将处理后的数据写入 CSV 文件
-total_data.to_csv('D:\.a桌面\作业\吕一清\空间地理\教育专题\教育经费\经费统计表下载链接.csv', index=False)
+total_data.to_csv('C:\Users\Administrator\Desktop\经费统计表下载链接.csv', index=False)
 
 print("数据处理完成并保存到 processed_data.csv 文件中。")
