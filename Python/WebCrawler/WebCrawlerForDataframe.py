@@ -1,11 +1,10 @@
 # 下载统计表
 
-
 import os
 import pandas as pd
 # 定义下载目录
-download_dir = r"D:\.a桌面\作业\吕一清\空间地理\教育专题\教育经费\教育经费统计表"
-data_filtered = pd.read_csv('D:\.a桌面\作业\吕一清\空间地理\教育专题\教育经费\经费统计表下载链接.csv')
+download_dir = r"C:\Users\Administrator\Desktop\教育经费统计表"
+data_filtered = pd.read_csv('C:\Users\Administrator\Desktop\经费统计表下载链接.csv')
 
 
 # 比较早的年代没有下载链接
