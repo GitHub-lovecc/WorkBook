@@ -4,12 +4,12 @@
 import pandas as pd
 
 # 从 CSV 文件加载数据
-df1 = pd.read_csv('D:\.a桌面\作业\吕一清\空间地理\教育专题\教育经费\教育经费执行公报1.csv')
-df2 = pd.read_csv('D:\.a桌面\作业\吕一清\空间地理\教育专题\教育经费\教育经费执行公报2.csv')
+df1 = pd.read_csv('C:\Users\Administrator\Desktop\教育经费执行公报1.csv')
+df2 = pd.read_csv('C:\Users\Administrator\Desktop\教育经费执行公报2.csv')
 
 combined_df = pd.concat([df1,df2], ignore_index=True)
 
-combined_df.to_csv('D:\.a桌面\作业\吕一清\空间地理\教育专题\教育经费\combined_df经费.csv', index=False)
+combined_df.to_csv('C:\Users\Administrator\Desktop\combined_df经费.csv', index=False)
 
 from selenium import webdriver
 import time
@@ -19,7 +19,7 @@ def process_links(links):
     browser = webdriver.Chrome()
     time.sleep(3)
     for link, title in links:
-        with open(r"D:\.a桌面\作业\吕一清\空间地理\教育专题\教育经费\\" + title + '.txt', "w", encoding='utf-8') as f:
+        with open(r"C:\Users\Administrator\Desktop\\" + title + '.txt', "w", encoding='utf-8') as f:
             f.write(title + '\n')
             browser.get(link)
             time.sleep(1)
