@@ -1,53 +1,53 @@
-import asyncio
-import aiohttp
+# 爬取教育经费执行公报网址
+
+
+from selenium import webdriver
+import time
 import pandas as pd
-from bs4 import BeautifulSoup
+from selenium.webdriver.common.by import By
 
-# 异步函数：获取网页内容
-async def fetch_page(session, url):
-    async with session.get(url) as response:
-        return await response.text()
+def crawl_data(url, file_path):
+    try:
+        browser = webdriver.Chrome()
+        browser.get(url)
+        time.sleep(5)
 
-# 异步函数：解析网页内容，提取链接和标题
-async def parse_page(html):
-    data = pd.DataFrame([], columns=['链接', '标题'])
-    soup = BeautifulSoup(html, 'html.parser')
-    # 找到包含文章列表的元素
-    class_element = soup.find('ul', class_='moe-list')
-    if class_element:
-        # 遍历每个列表项，提取链接和标题
-        for li in class_element.find_all('li'):
-            link = li.find('a')['href']
-            title = li.find('a').text
-            data = data.append({'链接': link, '标题': title}, ignore_index=True)
-    return data
+        data = pd.DataFrame([], columns=['链接', '标题'])
 
-# 异步函数：爬取数据，并保存到CSV文件中
-async def crawl_data(url, file_path):
-    # 创建一个异步HTTP客户端会话
-    async with aiohttp.ClientSession() as session:
-        # 获取网页内容
-        html = await fetch_page(session, url)
-        # 解析网页内容，提取数据
-        data = await parse_page(html)
-        # 将数据保存到CSV文件中
-        data.to_csv(file_path, encoding='utf_8_sig', index=False)
+        # 定位具有特定 class 的元素
+        class_element = browser.find_element(By.CLASS_NAME, 'moe-list')  # 请替换 'class_name' 为您要定位的 class 名称
+
+        # 在定位的元素下寻找 <li> 元素
+        poli = class_element.find_elements(By.TAG_NAME, 'li')
+        for elements in poli:
+            try:
+                link = elements.find_element(By.TAG_NAME, "a").get_attribute('href')  # 链接
+                title = elements.find_element(By.TAG_NAME, "a").text  # 标题
+                content = [link, title]
+                while len(content) < 2:
+                    content.append(0)
+                content = pd.DataFrame([content], columns=['链接', '标题'])
+                data = pd.concat([data, content])
+            except Exception as e:
+                print(f"爬取失败: {e}")
+
         print(f"已爬取完当前页面内容: {url}")
 
-# 主函数
-async def main():
-    tasks = []  # 创建一个任务列表
-    base_url = 'http://www.moe.gov.cn/jyb_sjzl/sjzl_jfzxgg/index_{}.html'
-    file_path_base = r'C:\Users\Administrator\Desktop\教育经费执行公报{}.csv'
-    # 循环遍历要爬取的页面数量
-    for i in range(1, 3):  # 假设要爬取前两页数据
-        url = base_url.format(i)
-        file_path = file_path_base.format(i)
-        # 创建异步任务，并添加到任务列表中
-        tasks.append(crawl_data(url, file_path))
-    # 并发执行所有任务
-    await asyncio.gather(*tasks)
+        # 将 DataFrame 写入 CSV 文件
+        data.to_csv(file_path, encoding='utf_8_sig', index=False)
 
-if __name__ == "__main__":
-    asyncio.run(main())  # 运行主函数
+    except Exception as e:
+        print(f"爬取失败: {e}")
 
+    finally:
+        # 关闭浏览器
+        browser.quit()
+
+# 调用函数进行爬取
+url_1 = 'http://www.moe.gov.cn/jyb_sjzl/sjzl_jfzxgg/'
+file_path_1 = r'C:\Users\Administrator\Desktop\教育经费执行公报1.csv'
+crawl_data(url_1, file_path_1)
+
+url_2 = 'http://www.moe.gov.cn/jyb_sjzl/sjzl_jfzxgg/index_1.html'
+file_path_2 = r'C:\Users\Administrator\Desktop\教育经费执行公报2.csv'
+crawl_data(url_2, file_path_2)
